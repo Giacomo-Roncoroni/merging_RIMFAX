@@ -23,5 +23,5 @@ Python version has to be 3.x < 3.8. If a wrong version of python, i.e. Python > 
       AttributeError: 'ElementTree' object has no attribute 'getiterator'
 
 Please downgrade python. 
-In data_gen folder you can find the script. 
+In 00_data_gen folder you can find the script. 
 
