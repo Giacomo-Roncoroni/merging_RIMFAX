@@ -25,3 +25,6 @@ Python version has to be 3.x < 3.8. If a wrong version of python, i.e. Python > 
 Please downgrade python. 
 In 00_data_gen folder you can find the script. 
 
+# Data merging
+
+Available soon!
