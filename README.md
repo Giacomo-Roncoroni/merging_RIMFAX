@@ -12,4 +12,5 @@ The integration of GPR data at various frequencies, collected with different ant
 # data download 
 
 Data are open access and can be efficiently downloaded from a Ubuntu terminal with the comand:
+
      wget -A xml,csv -m -p -E -k -K -np -nc  https://pds-geosciences.wustl.edu/m2020/urn-nasa-pds-mars2020_rimfax/data_calibrated/2021/
