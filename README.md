@@ -15,3 +15,13 @@ Data are open access and can be efficiently downloaded from a Ubuntu terminal wi
 
      wget -A xml,csv -m -p -E -k -K -np -nc  https://pds-geosciences.wustl.edu/m2020/urn-nasa-pds-mars2020_rimfax/data_calibrated/2021/
 
+# Data reading and Sorting 
+
+Data are read using pds4_tools package by python: python script has been tested only with a version <= 0.71 which can be downloaded from https://pdssbn.astro.umd.edu/toolsrc/readpds_python/0.71/ You can find the zipped version in this repository. 
+Python version has to be 3.x < 3.8. If a wrong version of python, i.e. Python > 3.9, it raises the error: 
+
+      AttributeError: 'ElementTree' object has no attribute 'getiterator'
+
+Please downgrade python. 
+In data_gen folder you can find the script. 
+
