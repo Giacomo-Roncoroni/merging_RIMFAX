@@ -3,7 +3,7 @@ G. Roncoroni, E. Forte, M. Pipan
 
 Department of Mathematics and Geosciences, University of Trieste, Italy
 
-Submitted to Geophysical Research Letters
+Submitted
 
 # Abstract
 
