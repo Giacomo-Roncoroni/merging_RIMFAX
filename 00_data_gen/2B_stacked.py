@@ -13,7 +13,7 @@ warnings.filterwarnings("ignore")
 #################################################
 # define path
 # path with raw data
-data_path = 'data/'
+data_path = 'pds-geosciences.wustl.edu/m2020/urn-nasa-pds-mars2020_rimfax/data_calibrated/2022/'
 # path to save data
 data_save = 'data_ok/'
 # True if save format is numpy, False for binary
@@ -51,7 +51,7 @@ elev = np.zeros((0))
 if pds4_tools.__version__== '0.71':
 	print('Correct pds4_tools version: it should work!')
 	# find all the files in current folder with '.xml' extension --> only files with header infos
-	onlyfiles = ['data/' + f for f in listdir('data/') if f[-4: ] == '.xml']
+	onlyfiles = [data_path + f for f in listdir(data_path) if f[-4: ] == '.xml']
 	# init days according to number of files
 	day = np.zeros((len(onlyfiles), 2))
 	#k is just for days index
@@ -61,7 +61,7 @@ if pds4_tools.__version__== '0.71':
 		# if filename has the correct extension
 		if name[:-4] != '.xml':
 			# read data structure with pds4_tools [no print]
-			struct_2B = pds4_tools.pds4_read(name, verbose = 0)
+			struct_2B = pds4_tools.pds4_read(name)
 			# latitude
 			la  = struct_2B.structures[0][27]
 			# longitude
@@ -82,13 +82,14 @@ if pds4_tools.__version__== '0.71':
 			day[k, 0] =  int(name[-9:-4]) 
 			day[k, 1] =  idx_surf.shape[0]
 			# append and create matrix
-			lat = np.append(lat, la[idx_surf])
-			lon = np.append(lon, lo[idx_surf])
-			elev = np.append(elev, el[idx_surf])
-			data_surface = np.append(data_surface, data_2B[idx_surf, :], axis=0)
-			data_shallow = np.append(data_shallow, data_2B[idx_shal, :], axis=0)
-			data_deep = np.append(data_deep, data_2B[idx_deep, :], axis=0)
-			k += 1
+			if idx_surf.shape == idx_shal.shape and idx_surf.shape == idx_deep.shape:
+				lat = np.append(lat, la[idx_surf])
+				lon = np.append(lon, lo[idx_surf])
+				elev = np.append(elev, el[idx_surf])
+				data_surface = np.append(data_surface, data_2B[idx_surf, :], axis=0)
+				data_shallow = np.append(data_shallow, data_2B[idx_shal, :], axis=0)
+				data_deep = np.append(data_deep, data_2B[idx_deep, :], axis=0)
+				k += 1
 else:
 	sys.exit('Wrong pds4_tools version installed!\nExpected: 0.71, but found: ' + pds4_tools.__version__)
 
@@ -119,4 +120,3 @@ else:
     data_surface.astype('float32').tofile(data_save + 'data_surface' + '_float32')
     data_shallow.astype('float32').tofile(data_save + 'data_shallow' + '_float32')
     data_deep.astype('float32').tofile(data_save + 'data_deep' + '_float32')
-#################################################
