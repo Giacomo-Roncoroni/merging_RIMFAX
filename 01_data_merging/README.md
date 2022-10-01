@@ -1,3 +1,3 @@
 # Data merging
 
-Available soon!
+Code linked to the article
