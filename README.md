@@ -27,4 +27,4 @@ In 00_data_gen folder you can find the script.
 
 # Data merging
 
-Available soon!
+See the notebook that describes the procedure
